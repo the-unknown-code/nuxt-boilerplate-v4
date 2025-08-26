@@ -6723,6 +6723,11 @@ tar@^7.4.0:
     mkdirp "^3.0.1"
     yallist "^5.0.0"
 
+tempus@^1.0.0-dev.12:
+  version "1.0.0-dev.12"
+  resolved "https://registry.yarnpkg.com/tempus/-/tempus-1.0.0-dev.12.tgz#1d0c8b2d812fffa8361ca45048a2fd588cf90f2d"
+  integrity sha512-P5If/MVdIDRGCSd8aqA55VteQdvC7fOgK36xVkj0hTGgJdDoAeGbdegMDeREbTvORFqY+JRlvNEBd/sR8RNYNQ==
+
 terser@^5.17.4:
   version "5.43.1"
   resolved "https://registry.yarnpkg.com/terser/-/terser-5.43.1.tgz#88387f4f9794ff1a29e7ad61fb2932e25b4fdb6d"

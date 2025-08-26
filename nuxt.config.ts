@@ -6,11 +6,5 @@ export default defineNuxtConfig({
 
 	eslint: {
 		checker: true,
-		config: {
-			stylistic: {
-				indent: 2,
-				semi: true,
-			},
-		},
 	},
 });
