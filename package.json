@@ -24,6 +24,7 @@
   "devDependencies": {
     "@pinia/nuxt": "^0.11.2",
     "@vueuse/nuxt": "^13.7.0",
+    "sass": "^1.91.0",
     "typescript": "^5.9.2",
     "vite-plugin-eslint2": "^5.0.4"
   }
