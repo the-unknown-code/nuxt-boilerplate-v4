@@ -5,12 +5,9 @@
 		<client-only>
 			<debug-orchestra />
 		</client-only>
-		
 	</lenis>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

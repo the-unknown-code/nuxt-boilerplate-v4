@@ -14,6 +14,14 @@ $mobile-breakpoint: get("breakpoints.mobile"); // app.config.ts
     }
 }
 
+@mixin fill($position: absolute) {
+    position: #{$position};
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
 @mixin reduced-motion {
     @media (prefers-reduced-motion: reduce) {
         @content;
