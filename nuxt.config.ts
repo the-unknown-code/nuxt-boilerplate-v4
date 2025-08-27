@@ -5,6 +5,12 @@ export default defineNuxtConfig({
 	modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
 	devtools: { enabled: true },
 	css: ['@/assets/main.scss'],
+
+	runtimeConfig: {
+		public: {
+			breakpoints: config.breakpoints,
+		},
+	},
 	compatibilityDate: '2025-07-15',
 
 	vite: {

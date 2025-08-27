@@ -5,6 +5,9 @@
 ░╚═══██╗░░░██║░░░██║░░░██║██║░░██║██║██║░░██║  ██╔══╝░░██╔══██╗██╔══╝░░██║██║░░╚██╗██╔══██║░░░██║░░░
 ██████╔╝░░░██║░░░╚██████╔╝██████╔╝██║╚█████╔╝  ██║░░░░░██║░░██║███████╗██║╚██████╔╝██║░░██║░░░██║░░░
 ╚═════╝░░░░╚═╝░░░░╚═════╝░╚═════╝░╚═╝░╚════╝░  ╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═╝░╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░
+
+Nuxt 4 Boilerplate
+@author: Studio Freight
 */
 
 import { generateShades } from './shared/sass-utils/utils';
@@ -43,6 +46,9 @@ const grid: any = {
 	margin: [16, 48]
 }
 
+// Define global spacers
+const spacers: any = [4, 8, 16, 32, 64]
+
 // Application-level configuration (SSR, prefetching, etc.)
 export const app = {
 	ssr: false,
@@ -56,5 +62,6 @@ export default {
 	colors,
 	themes,
 	breakpoints,
+	spacers,
 	grid
 };
