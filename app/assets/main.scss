@@ -1,2 +1,4 @@
-@use './utils/reset.scss';
-@use './vendors/lenis.scss';
+@use './utils/reset.scss' as *;
+@use './utils/functions.scss' as *;
+@use './vendors/lenis.scss' as *;
+@use './layout/grid.scss' as *;

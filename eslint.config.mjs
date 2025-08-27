@@ -6,6 +6,9 @@ export default withNuxt({
 		'vue/html-indent': 'off',
 		'vue/multi-word-component-names': 'off',
 		'vue/max-attributes-per-line': 'off',
+		'@typescript-eslint/no-explicit-any': 'off',
 		'@stylistic/comma-dangle': 'off',
+		'@stylistic/semi': 'off',
+		'@stylistic/eol-last': 'off',
 	},
 });
