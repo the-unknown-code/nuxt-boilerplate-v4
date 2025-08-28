@@ -17,7 +17,10 @@
 
 import Tempus from 'tempus';
 
-export const useFrame = (callback: () => void, priority: number = 0) => {
+export const useFrame = (
+	callback: (time: number, delta: number) => void,
+	priority: number = 0
+) => {
 	let unsubscribe: (() => void) | undefined;
 
 	onMounted(() => {

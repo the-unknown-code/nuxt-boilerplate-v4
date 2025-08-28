@@ -1,8 +1,13 @@
-import config from './app.config';
+import config, { app } from './app.config';
 import { toSass } from './shared/sass-utils';
 
+const modules = ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'];
+if (app.storyblok) {
+	modules.push('@storyblok/nuxt');
+}
+
 export default defineNuxtConfig({
-	modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
+	modules,
 	devtools: { enabled: true },
 	css: ['@/assets/main.scss'],
 
@@ -14,23 +19,23 @@ export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 
 	vite: {
+		build: {
+			cssMinify: true,
+		},
 		css: {
 			preprocessorOptions: {
 				scss: {
 					additionalData: '@use "@/assets/utils/functions.scss" as *;',
 					functions: {
 						'get($keys)': function (keys: any) {
-							keys = keys
-								.toString()
-								.replace(/['"]+/g, '')
-								.split('.')
+							keys = keys.toString().replace(/['"]+/g, '').split('.');
 
-							let result: any = config
+							let result: any = config;
 							for (let i = 0; i < keys.length; i++) {
-								result = result[keys[i]]
+								result = result[keys[i]];
 							}
 
-							return toSass(result)
+							return toSass(result);
 						},
 						'getColors()': function () {
 							return toSass(config.colors);
@@ -43,7 +48,15 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	eslint: {
 		checker: true,
+	},
+
+	nitro: {
+		compressPublicAssets: {
+			brotli: true,
+			gzip: true,
+		},
 	},
 });

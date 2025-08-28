@@ -14,9 +14,9 @@ import { generateShades } from './shared/sass-utils/utils';
 
 // Define base colors and generate their shades
 const colors: any = generateShades({
-	'black': '#111111',
+	black: '#111111',
 	'off-white': '#f5f5f5',
-	'blue': '#0000ff',
+	blue: '#0000ff',
 });
 
 // Define light and dark themes using generated colors
@@ -36,22 +36,23 @@ const themes: any = {
 // Define responsive design breakpoints for layouts
 const breakpoints: any = {
 	mobile: 800,
-	wide: 1720
+	wide: 1720,
 };
 
 // Define grid system with columns, gap, and margin settings
 const grid: any = {
 	columns: [4, 16],
 	gap: [8, 8],
-	margin: [16, 48]
-}
+	margin: [16, 48],
+};
 
 // Define global spacers
-const spacers: any = [4, 8, 16, 32, 64]
+const spacers: any = [4, 8, 16, 32, 64];
 
 // Application-level configuration (SSR, prefetching, etc.)
 export const app = {
 	ssr: false,
+	storyblok: true,
 	link: {
 		prefetch: true,
 	},
@@ -63,5 +64,5 @@ export default {
 	themes,
 	breakpoints,
 	spacers,
-	grid
+	grid,
 };
