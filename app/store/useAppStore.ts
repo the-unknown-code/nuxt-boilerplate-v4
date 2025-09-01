@@ -4,6 +4,7 @@ interface Story {
 	id: string;
 	refreshKey: any;
 	content: any;
+	settings: any;
 }
 
 export default defineStore('app.store', {
@@ -11,6 +12,7 @@ export default defineStore('app.store', {
 		theme: 'theme-light',
 		enabled: true,
 		stories: [] as Story[],
+		settings: {} as any,
 	}),
 	getters: {
 		isEnabled: (state: any) => state.enabled,
@@ -35,6 +37,9 @@ export default defineStore('app.store', {
 			if (!this.stories.find((s: Story) => s.id === story.id)) {
 				this.stories.push(story);
 			}
+		},
+		saveSettings(settings: any) {
+			this.settings = settings;
 		},
 	},
 });

@@ -36,18 +36,6 @@ export default defineNuxtConfig({
 
 	css: ['@/assets/main.scss'],
 
-	imports: {
-		dirs: [
-			// include the usual composable locations
-			'composables/**',
-			'app/composables/**',
-
-			// then exclude your Storyblok folder (must come AFTER the include)
-			'!app/composables/storyblok',
-			'!app/composables/storyblok/**',
-		],
-	},
-
 	$development: {
 		devtools: { enabled: true },
 		app: {
