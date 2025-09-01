@@ -78,9 +78,9 @@ const spacers: any = [4, 8, 16, 32, 64];
 // Application-level configuration (SSR, prefetching, etc.)
 export const app: AppConfig = {
 	title: 'SF Boilerplate',
-	ssr: true,
+	ssr: false,
 	storyblok: {
-		enabled: true,
+		enabled: false,
 		forceDraft: false,
 		apiOptions: {},
 	},

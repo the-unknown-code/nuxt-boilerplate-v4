@@ -10,5 +10,9 @@ export default withNuxt({
 		'@stylistic/comma-dangle': 'off',
 		'@stylistic/semi': 'off',
 		'@stylistic/eol-last': 'off',
+		'@typescript-eslint/ban-ts-comment': [
+			'warn',
+			{ 'ts-expect-error': 'allow-with-description' },
+		],
 	},
 });

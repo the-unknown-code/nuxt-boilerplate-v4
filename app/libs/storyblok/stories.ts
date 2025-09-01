@@ -5,13 +5,16 @@ export const useAsyncStory = async (
 	apiOptions: any = {},
 	bridgeOptions: any = {}
 ) => {
-	const { $preview } = useNuxtApp();
+	const nuxtApp = useNuxtApp();
+	const { $preview } = nuxtApp;
 	const version: string = $preview ? 'draft' : 'published';
 	const refreshKey: Ref<string> = ref(url);
 	const story: Ref<any> = ref({});
 
+	const storyblokApi: any = useStoryblokApi();
+
 	const { data } = await useAsyncData(url, async () => {
-		const { data } = await useStoryblokApi().get(`cdn/stories/${url}`, {
+		const { data } = await storyblokApi.get(`cdn/stories/${url}`, {
 			version,
 			resolve_links: 'url',
 			resolve_links_level: 2,
@@ -33,9 +36,9 @@ export const useAsyncStory = async (
 
 	onMounted(async () => {
 		if (story.value && story.value.id) {
-			useStoryblokBridge(
+			(globalThis as any).useStoryblokBridge(
 				story.value.id,
-				tmpStory => {
+				(tmpStory: any) => {
 					story.value = tmpStory;
 					refreshKey.value = `story-${url}-${
 						Math.random() + (1).toString(36).substring(7)
