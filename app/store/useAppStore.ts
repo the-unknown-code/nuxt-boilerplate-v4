@@ -4,7 +4,6 @@ interface Story {
 	id: string;
 	refreshKey: any;
 	content: any;
-	settings: any;
 }
 
 export default defineStore('app.store', {

@@ -76,6 +76,4 @@ export const useAsyncStoryState = async (
 		store.saveStory({ id: url, refreshKey, content: story.value });
 		return { story, refreshKey };
 	}
-
-	return { story: {}, refreshKey: '' };
 };
