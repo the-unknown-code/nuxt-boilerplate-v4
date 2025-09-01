@@ -2,14 +2,25 @@ import { defineStore } from 'pinia';
 
 export default defineStore('app.store', {
 	state: () => ({
-		theme: 'light',
+		theme: 'theme-light',
+		enabled: true,
 	}),
 	getters: {
-		theme: (state: any) => state.theme,
+		isEnabled: (state: any) => state.enabled,
+		currentTheme: (state: any) => state.theme,
 	},
 	actions: {
+		enable() {
+			this.enabled = true;
+		},
+		disable() {
+			this.enabled = false;
+		},
 		setTheme(theme: string) {
 			this.theme = theme;
+		},
+		switchTheme() {
+			this.theme = this.theme === 'theme-light' ? 'theme-dark' : 'theme-light';
 		},
 	},
 });

@@ -13,6 +13,7 @@ Nuxt 4 Boilerplate
 import { generateShades } from './shared/sass-utils/utils';
 
 interface AppConfig {
+	title: string;
 	ssr: boolean;
 	storyblok: {
 		enabled: boolean;
@@ -72,15 +73,21 @@ const spacers: any = [4, 8, 16, 32, 64];
 
 // Application-level configuration (SSR, prefetching, etc.)
 export const app: AppConfig = {
+	title: 'SF Boilerplate',
 	ssr: false,
-	storyblok: {},
+	storyblok: {
+		enabled: false,
+	},
 	three: {
-		alpha: false,
-		antialias: false,
-		stencil: false,
-		depth: false,
-		powerPreference: 'high-performance',
-		preserveDrawingBuffer: false,
+		enabled: false,
+		options: {
+			alpha: false,
+			antialias: false,
+			stencil: false,
+			depth: false,
+			powerPreference: 'high-performance',
+			preserveDrawingBuffer: false,
+		},
 	},
 	link: {
 		prefetch: true,

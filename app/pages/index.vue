@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-	<div class="layout-block">
-		<a-link href="/"> { Index } </a-link>
-	</div>
+	<div class="layout-block">{ index }</div>
 </template>
+
+<script setup lang="ts"></script>
 
 <style scoped></style>
