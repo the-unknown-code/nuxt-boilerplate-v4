@@ -1,10 +1,12 @@
 <template>
-	<lenis :options="{ duration: 1.2 }">
+	<lenis :options="{}">
 		<div :class="[$store.currentTheme, { enabled: $store.isEnabled }]">
 			<slot />
 
 			<client-only>
-				<debug-orchestra />
+				<dev-only>
+					<debug-orchestra />
+				</dev-only>
 			</client-only>
 		</div>
 	</lenis>
@@ -14,7 +16,6 @@
 import useAppStore from '~/store/useAppStore';
 
 const $store = useAppStore();
-console.log($store.theme);
 </script>
 
 <style scoped></style>

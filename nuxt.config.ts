@@ -7,7 +7,10 @@ if (app.storyblok.enabled) {
 	// @ts-expect-error - Storyblok module is not typed
 	modules.push([
 		'@storyblok/nuxt',
-		{ accessToken: process.env.STORYBLOK_ACCESS_TOKEN },
+		{
+			accessToken: process.env.STORYBLOK_KEY,
+			apiOptions: app.storyblok.apiOptions,
+		},
 	]);
 }
 
@@ -27,9 +30,9 @@ export const scssFunctions = {
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 
-	modules,
-
 	devtools: { enabled: true },
+
+	modules,
 
 	css: ['@/assets/main.scss'],
 

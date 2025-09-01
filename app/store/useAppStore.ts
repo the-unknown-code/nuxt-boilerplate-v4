@@ -1,13 +1,22 @@
 import { defineStore } from 'pinia';
 
+interface Story {
+	id: string;
+	refreshKey: any;
+	content: any;
+}
+
 export default defineStore('app.store', {
 	state: () => ({
 		theme: 'theme-light',
 		enabled: true,
+		stories: [] as Story[],
 	}),
 	getters: {
 		isEnabled: (state: any) => state.enabled,
 		currentTheme: (state: any) => state.theme,
+		getStoryById: (state: any) => (id: string) =>
+			state.stories.find((story: Story) => story.id === id),
 	},
 	actions: {
 		enable() {
@@ -21,6 +30,11 @@ export default defineStore('app.store', {
 		},
 		switchTheme() {
 			this.theme = this.theme === 'theme-light' ? 'theme-dark' : 'theme-light';
+		},
+		saveStory(story: Story) {
+			if (!this.stories.find((s: Story) => s.id === story.id)) {
+				this.stories.push(story);
+			}
 		},
 	},
 });

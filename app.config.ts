@@ -17,6 +17,10 @@ interface AppConfig {
 	ssr: boolean;
 	storyblok: {
 		enabled: boolean;
+		forceDraft?: boolean;
+		apiOptions: {
+			region?: string;
+		};
 	};
 	three: {
 		enabled: boolean;
@@ -74,9 +78,11 @@ const spacers: any = [4, 8, 16, 32, 64];
 // Application-level configuration (SSR, prefetching, etc.)
 export const app: AppConfig = {
 	title: 'SF Boilerplate',
-	ssr: false,
+	ssr: true,
 	storyblok: {
-		enabled: false,
+		enabled: true,
+		forceDraft: false,
+		apiOptions: {},
 	},
 	three: {
 		enabled: false,
