@@ -1,2 +1,2 @@
 export { useAsyncStory, useAsyncStoryState } from './stories';
-export { useUnwrapBlok } from './utils';
+export { useUnwrapBlok, useStoryblokHead } from './utils';

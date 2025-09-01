@@ -7,7 +7,9 @@ export default defineNuxtPlugin(async () => {
 	} = useRuntimeConfig();
 
 	if (app.storyblok.enabled) {
+		console.log('>>', app);
 		const { story: settings } = await useAsyncStoryState('global');
+		console.log('>>', settings);
 		useAppStore().saveSettings(settings);
 	}
 });

@@ -18,6 +18,7 @@ export default defineStore('app.store', {
 		currentTheme: (state: any) => state.theme,
 		getStoryById: (state: any) => (id: string) =>
 			state.stories.find((story: Story) => story.id === id),
+		globalSettings: (state: any) => state.settings,
 	},
 	actions: {
 		enable() {
@@ -37,8 +38,8 @@ export default defineStore('app.store', {
 				this.stories.push(story);
 			}
 		},
-		saveSettings(settings: any) {
-			this.settings = settings;
+		saveSettings(data: any) {
+			this.settings = data;
 		},
 	},
 });

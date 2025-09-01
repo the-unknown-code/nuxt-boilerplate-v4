@@ -63,9 +63,11 @@ export const useAsyncStoryState = async (
 	const store = useAppStore();
 
 	if (store.getStoryById(url)) {
+		const story = store.getStoryById(url);
+
 		return {
-			story: store.getStoryById(url).content,
-			refreshKey: store.getStoryById(url).refreshKey,
+			story: story.content,
+			refreshKey: story.refreshKey,
 		};
 	} else {
 		const { story, refreshKey } = await useAsyncStory(

@@ -80,7 +80,7 @@ export const app: AppConfig = {
 	title: 'SF Boilerplate',
 	ssr: false,
 	storyblok: {
-		enabled: false,
+		enabled: true,
 		forceDraft: false,
 		apiOptions: {},
 	},
