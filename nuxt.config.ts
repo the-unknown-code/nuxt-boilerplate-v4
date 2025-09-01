@@ -2,7 +2,7 @@ import config, { app } from './app.config';
 import { toSass } from './shared/sass-utils';
 
 const modules = ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'];
-if (app.storyblok) {
+if (app.storyblok.enabled) {
 	modules.push('@storyblok/nuxt');
 }
 
@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			breakpoints: config.breakpoints,
+			app: app as any,
 		},
 	},
 	compatibilityDate: '2025-07-15',

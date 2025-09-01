@@ -12,6 +12,27 @@ Nuxt 4 Boilerplate
 
 import { generateShades } from './shared/sass-utils/utils';
 
+interface AppConfig {
+	ssr: boolean;
+	storyblok: {
+		enabled: boolean;
+	};
+	three: {
+		enabled: boolean;
+		options: {
+			alpha: boolean;
+			antialias: boolean;
+			stencil: boolean;
+			depth: boolean;
+			powerPreference: string;
+			preserveDrawingBuffer: boolean;
+		};
+	};
+	link: {
+		prefetch: boolean;
+	};
+}
+
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#111111',
@@ -50,9 +71,17 @@ const grid: any = {
 const spacers: any = [4, 8, 16, 32, 64];
 
 // Application-level configuration (SSR, prefetching, etc.)
-export const app = {
+export const app: AppConfig = {
 	ssr: false,
-	storyblok: true,
+	storyblok: {},
+	three: {
+		alpha: false,
+		antialias: false,
+		stencil: false,
+		depth: false,
+		powerPreference: 'high-performance',
+		preserveDrawingBuffer: false,
+	},
 	link: {
 		prefetch: true,
 	},
