@@ -1,3 +1,20 @@
+<!--
+  Orchestra Component
+  -------------------
+  A visual layout grid overlay used as a design/debugging tool.
+  It renders a configurable number of vertical columns to help align content
+  with the design system during development.
+
+  Features:
+   • Toggles on/off with the "g" keyboard key.
+   • Dynamically reads the number of columns from the CSS variable `--layout-columns-count`.
+   • Adapts automatically to breakpoints via `useBreakpoints()`.
+   • Renders above all content without interfering with interactions (pointer-events disabled).
+
+  Props: 
+   • None (column count is derived from CSS variables).
+-->
+
 <template>
 	<div id="orchestra" :class="{ active }">
 		<div class="columns layout-grid">

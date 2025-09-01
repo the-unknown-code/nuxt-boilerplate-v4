@@ -1,3 +1,16 @@
+<!--
+  Marquee Component
+  -----------------
+  A horizontally scrolling marquee that loops its slot content infinitely.
+
+  Props:
+   • reverse (Boolean) → Scrolls right-to-left when false, left-to-right when true.
+   • repeat (Number, default: 3) → How many times the slot content is duplicated for seamless looping.
+   • speed (Number, default: 0.02) → Base scroll speed; higher = faster.
+   • pauseOnHover (Boolean) → Whether to stop scrolling when hovered.
+
+-->
+
 <template>
 	<div
 		ref="$container"
@@ -38,21 +51,18 @@ const lenis = useLenis();
 const scope = effectScope();
 
 const transform = ref<number>(0);
-const isIntersected = ref<boolean>(false);
 const isHovered = ref<boolean>(false);
 const $container = ref<HTMLElement | null>(null);
 const $track = ref<HTMLElement | null>(null);
 const $elements = shallowRef<HTMLElement[]>([]);
 
 // @ts-expect-error - IntersectionObserverEntry is not typed
-const { stop } = useIntersectionObserver($container, ([{ isIntersecting }]) => {
-	isIntersected.value = isIntersecting;
-});
+const { inView } = useInView($container);
 
 const render = () => {
 	useFrame((_, delta: number) => {
 		if (!$track.value) return;
-		if (!isIntersected.value) return;
+		if (!inView.value) return;
 		if (props.pauseOnHover && isHovered.value) return;
 
 		if (isNaN(transform.value)) transform.value = 0;
@@ -77,7 +87,6 @@ scope.run(render);
 
 tryOnBeforeUnmount(() => {
 	scope.stop();
-	stop();
 });
 </script>
 
