@@ -1,11 +1,14 @@
 <template>
-	<div class="layout-block">{{ story }}</div>
+	<div class="layout-block">
+		<h1>Test Font</h1>
+		<p class="mono-large">Test Font</p>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { useAsyncStoryState } from '~/libs/storyblok';
+// import { useAsyncStoryState } from '~/libs/storyblok';
 
-const { story } = await useAsyncStoryState('home');
+// const { story } = await useAsyncStoryState('home');
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

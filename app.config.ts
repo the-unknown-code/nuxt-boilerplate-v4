@@ -33,6 +33,19 @@ interface AppConfig {
 			preserveDrawingBuffer: boolean;
 		};
 	};
+	fonts: {
+		assets?: {
+			prefix: string;
+		};
+		defaults: {
+			weights: number[];
+		};
+		families: {
+			name: string;
+			provider: string;
+			weights?: number[];
+		}[];
+	};
 	link: {
 		prefetch: boolean;
 	};
@@ -94,6 +107,15 @@ export const app: AppConfig = {
 			powerPreference: 'high-performance',
 			preserveDrawingBuffer: false,
 		},
+	},
+	fonts: {
+		defaults: {
+			weights: [300, 400, 500, 700, 900],
+		},
+		families: [
+			{ name: 'Regesto Grotesk', provider: 'local' },
+			{ name: 'Geist Mono', provider: 'google' },
+		],
 	},
 	link: {
 		prefetch: true,

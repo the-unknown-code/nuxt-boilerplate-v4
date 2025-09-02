@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@nuxt/eslint": "1.9.0",
+		"@nuxt/fonts": "0.11.4",
 		"@nuxtjs/storybook": "9.0.1",
 		"@storyblok/nuxt": "8.0.4",
 		"eslint": "^9.0.0",

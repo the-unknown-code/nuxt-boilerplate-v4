@@ -1,0 +1,29 @@
+// ------ H1 -------
+@mixin h1 {
+    font-family: 'Regesto Grotesk';
+    font-size: 82px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .98;
+    letter-spacing: -0.82px;
+}
+
+h1, .h1 {
+    @include h1;
+}
+
+
+// ------ H2 -------
+@mixin mono-large {
+    font-family: 'Geist Mono';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+}
+
+.mono-large {
+    @include mono-large;
+}
