@@ -1,8 +1,9 @@
 <template>
-	<div class="layout-block">
-		<h1>Test Font</h1>
-		<p class="mono-large">Test Font</p>
-	</div>
+	<main class="page-index layout-block">
+		<common-a-link href="/test">
+			<p class="mono-large">Test Link</p>
+		</common-a-link>
+	</main>
 </template>
 
 <script setup lang="ts">
@@ -11,4 +12,9 @@
 // const { story } = await useAsyncStoryState('home');
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page-index {
+	padding: var(--spacer-64) 0;
+	height: 2000px;
+}
+</style>

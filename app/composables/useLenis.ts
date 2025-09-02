@@ -1,5 +1,5 @@
 export default (callback = () => {}) => {
-	const instanceKey = `lenis`;
+	const instanceKey: string = `lenis-instance`;
 	const lenis = inject<any>(instanceKey);
 
 	if (lenis?.value) {
