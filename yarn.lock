@@ -704,6 +704,13 @@
   resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-3.2.0.tgz#13ed8212f3b9ba697611529d15347f8528058cea"
   integrity sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==
 
+"@fuzzco/font-loader@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@fuzzco/font-loader/-/font-loader-1.0.2.tgz#73716df9bebc487c18b220d8e6d4ad782f038995"
+  integrity sha512-ztpjEYxdkL0pQjvq7GVeXUkIISe4akhMJ7G/DKqVhAZ++cKu25WSnVevQ7JbXGqG5PGiexzGUKMMJjWleTL+1w==
+  dependencies:
+    fontfaceobserver "^2.1.0"
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
@@ -4403,6 +4410,11 @@ fontaine@^0.6.0:
     pathe "^2.0.3"
     ufo "^1.6.1"
     unplugin "^2.3.2"
+
+fontfaceobserver@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.3.0.tgz#5fb392116e75d5024b7ec8e4f2ce92106d1488c8"
+  integrity sha512-6FPvD/IVyT4ZlNe7Wcn5Fb/4ChigpucKYSvD6a+0iMoLn2inpo711eyIcKjmDtE5XNcgAkSH9uN/nfAeZzHEfg==
 
 fontkit@^2.0.2:
   version "2.0.4"

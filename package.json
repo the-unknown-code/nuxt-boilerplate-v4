@@ -10,6 +10,7 @@
 		"postinstall": "nuxt prepare"
 	},
 	"dependencies": {
+		"@fuzzco/font-loader": "^1.0.2",
 		"@nuxt/eslint": "1.9.0",
 		"@nuxt/fonts": "0.11.4",
 		"@nuxtjs/storybook": "9.0.1",

@@ -43,7 +43,6 @@ interface AppConfig {
 		families: {
 			name: string;
 			provider: string;
-			weights?: number[];
 		}[];
 	};
 	link: {
@@ -113,8 +112,14 @@ export const app: AppConfig = {
 			weights: [300, 400, 500, 700, 900],
 		},
 		families: [
-			{ name: 'Regesto Grotesk', provider: 'local' },
-			{ name: 'Geist Mono', provider: 'google' },
+			{
+				name: 'Regesto Grotesk',
+				provider: 'local',
+			},
+			{
+				name: 'Geist Mono',
+				provider: 'google',
+			},
 		],
 	},
 	link: {
