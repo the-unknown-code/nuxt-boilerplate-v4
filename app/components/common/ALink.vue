@@ -37,7 +37,13 @@
 	>
 		<slot />
 	</a>
-	<nuxt-link v-else :to="href" :aria-label="ariaLabel" :replace="replaceState">
+	<nuxt-link
+		v-else
+		:to="href"
+		:aria-label="ariaLabel"
+		:replace="replaceState"
+		:prefetch-on="app.link.prefetch"
+	>
 		<slot />
 	</nuxt-link>
 </template>
@@ -61,6 +67,10 @@ const props = defineProps({
 		default: false,
 	},
 });
+
+const {
+	public: { app },
+} = useRuntimeConfig();
 
 const isAbsoluteLink = computed(() => {
 	return props.noNewTab || /^mailto:|^tel:/.test(props.href);

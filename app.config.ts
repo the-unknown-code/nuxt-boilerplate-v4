@@ -46,7 +46,7 @@ interface AppConfig {
 		}[];
 	};
 	link: {
-		prefetch: boolean;
+		prefetch: string;
 	};
 }
 
@@ -123,7 +123,7 @@ export const app: AppConfig = {
 		],
 	},
 	link: {
-		prefetch: true,
+		prefetch: 'visibility', // nuxt default
 	},
 };
 
