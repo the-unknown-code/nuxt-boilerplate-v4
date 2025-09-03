@@ -1,5 +1,5 @@
 <template>
-	<lenis :options="{}" ref="$wrapper">
+	<lenis :ref="({lenis}: any) => lenisInstance = lenis" :options="{}">
 		<div :class="[$store.currentTheme, { enabled: $store.isEnabled }]">
 			<site-header />
 
@@ -25,18 +25,19 @@
 </template>
 
 <script setup lang="ts">
+import type Lenis from 'lenis';
 import useAppStore from '~/store/useAppStore';
+
 const $store = useAppStore();
-const $wrapper = ref<HTMLElement | null>(null);
+const lenisInstance = ref<Lenis | null>(null);
 
 const onEnter = async () => {};
-
 const onAfterEnter = async () => {
 	$store.enable();
-	const lenisInstance = ($wrapper.value as any)?.lenis;
-	if (lenisInstance) {
+
+	if (lenisInstance.value) {
 		await nextTick();
-		lenisInstance.scrollTo(0, { immediate: true });
+		lenisInstance.value.scrollTo(0, { immediate: true, force: true });
 	}
 };
 

@@ -73,6 +73,14 @@ scope.run(async () => {
 	);
 });
 
+if (!import.meta.server && !lenis.value && root) {
+	const nuxtApp = useNuxtApp();
+	const isMounted = nuxtApp?.vueApp?._container;
+
+	if (isMounted) initLenis();
+	else hook('app:mounted', initLenis);
+}
+
 tryOnMounted(() => {
 	if (!lenis.value) {
 		initLenis();

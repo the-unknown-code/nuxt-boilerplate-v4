@@ -9,7 +9,7 @@ interface Story {
 export default defineStore('app.store', {
 	state: () => ({
 		theme: 'theme-light',
-		enabled: true,
+		enabled: import.meta.client ? false : true,
 		stories: [] as Story[],
 		settings: {} as any,
 	}),

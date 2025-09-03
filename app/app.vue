@@ -3,7 +3,7 @@
 		id="site"
 		:class="[
 			kebabCase(route.name as string),
-			{ 'fonts-loaded': fontsLoaded, 'is-loading': isLoading },
+			{ 'is-disabled': !enabled, 'fonts-loaded': fontsLoaded, 'is-loading': isLoading },
 		]"
 	>
 		<NuxtLayout>
@@ -16,10 +16,19 @@
 // @ts-expect-error - Font loader is not typed
 import loadFonts from '@fuzzco/font-loader';
 import { kebabCase } from 'lodash';
+import { EVENTS } from './libs/constants/event';
+import useAppStore from './store/useAppStore';
 
+const $store = useAppStore();
+const { $emit } = useNuxtApp();
+const { width, height } = useWindowSize();
 const { isLoading } = useLoadingIndicator();
 const fontsLoaded = ref<boolean>(false);
+
 const route = useRoute();
+const scope = effectScope();
+
+const enabled = computed(() => $store.isEnabled);
 
 const preloadFonts = async () => {
 	try {
@@ -32,11 +41,31 @@ const preloadFonts = async () => {
 		}));
 		await loadFonts(families);
 		fontsLoaded.value = true;
+
+		if (import.meta.client) {
+			setTimeout(() => {
+				$store.enable();
+			}, 1000);
+		}
 	} catch (error) {
 		console.error(error);
 		fontsLoaded.value = true;
 	}
 };
+
+scope.run(async () => {
+	const resize = useDebounceFn(() => {
+		$emit(EVENTS.RESIZE, { width: width.value, height: height.value });
+	}, 100);
+
+	watch([width, height], () => {
+		resize();
+	});
+});
+
+tryOnBeforeUnmount(() => {
+	scope.stop();
+});
 
 tryOnBeforeMount(async () => {
 	await preloadFonts();
