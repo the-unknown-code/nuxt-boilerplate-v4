@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div>
-    Component: site/Footer
-  </div>
+	<footer />
 </template>
+
+<script setup lang="ts"></script>
 
 <style scoped></style>

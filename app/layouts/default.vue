@@ -1,6 +1,6 @@
 <template>
 	<lenis :options="{}">
-		<div :class="[$store.currentTheme]">
+		<div :class="['container']">
 			<site-header />
 
 			<page-transition>
@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import useAppStore from '~/store/useAppStore';
-const $store = useAppStore();
+//import useAppStore from '~/store/useAppStore';
+//const $store = useAppStore();
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

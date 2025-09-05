@@ -1,9 +1,18 @@
+<!--
+  App.vue
+  Root component of the Nuxt 4.1 application.
+  - Handles global layout wrapper and page rendering.
+  - Manages app-level states like focus, resize events, font loading, and loading indicators.
+  - Applies global classes to #site for styling and interaction control.
+-->
+
 <template>
 	<div
 		id="site"
 		:class="[
 			kebabCase(route.name as string),
-			{ 'is-disabled': !enabled, 'fonts-loaded': fontsLoaded, 'is-loading': isLoading },
+			{  'is-disabled': !enabled, 'fonts-loaded': fontsLoaded, 'is-loading': isLoading },
+			$store.theme
 		]"
 	>
 		<NuxtLayout>
@@ -23,11 +32,11 @@ const $store = useAppStore();
 const { $emit } = useNuxtApp();
 const { width, height } = useWindowSize();
 const { isLoading } = useLoadingIndicator();
+const focused = useWindowFocus();
 const fontsLoaded = ref<boolean>(false);
 
 const route = useRoute();
 const scope = effectScope();
-
 const enabled = computed(() => $store.isEnabled);
 
 const preloadFonts = async () => {
@@ -41,12 +50,6 @@ const preloadFonts = async () => {
 		}));
 		await loadFonts(families);
 		fontsLoaded.value = true;
-
-		if (import.meta.client) {
-			setTimeout(() => {
-				$store.enable();
-			}, 1000);
-		}
 	} catch (error) {
 		console.error(error);
 		fontsLoaded.value = true;
@@ -58,13 +61,21 @@ scope.run(async () => {
 		$emit(EVENTS.RESIZE, { width: width.value, height: height.value });
 	}, 100);
 
+	watchOnce(fontsLoaded, () => {
+		setTimeout(() => {
+			$store.enable();
+		}, 100);
+	});
+
+	watch(focused, () => {
+		if (fontsLoaded.value) {
+			$store[focused.value ? 'enable' : 'disable']();
+		}
+	});
+
 	watch([width, height], () => {
 		resize();
 	});
-});
-
-tryOnBeforeUnmount(() => {
-	scope.stop();
 });
 
 tryOnBeforeMount(async () => {
@@ -80,7 +91,11 @@ tryOnBeforeMount(async () => {
 	overflow-x: clip;
 	opacity: 0;
 
-	&.is-loading {
+	background-color: var(--theme-bg);
+	color: var(--theme-fg);
+
+	&.is-loading,
+	&.is-not-focused {
 		pointer-events: none;
 	}
 

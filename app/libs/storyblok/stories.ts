@@ -3,7 +3,7 @@ import useAppStore from '~/store/useAppStore';
 export const useAsyncStory = async (
 	url: string,
 	apiOptions: any = {},
-	bridgeOptions: any = {}
+	bridgeOptions: any = null
 ) => {
 	const nuxtApp = useNuxtApp();
 	const { $preview } = nuxtApp;
@@ -34,18 +34,21 @@ export const useAsyncStory = async (
 		});
 	}
 
+	// Live Editing
 	onMounted(async () => {
-		if (story.value && story.value.id) {
-			(globalThis as any).useStoryblokBridge(
-				story.value.id,
-				(tmpStory: any) => {
-					story.value = tmpStory;
-					refreshKey.value = `story-${url}-${
-						Math.random() + (1).toString(36).substring(7)
-					},`;
-				},
-				{ preventClicks: true, resolveLinks: 'url', ...bridgeOptions }
-			);
+		if (bridgeOptions) {
+			if (story.value && story.value.id) {
+				useStoryblokBridge(
+					story.value.id,
+					(tmpStory: any) => {
+						story.value = tmpStory;
+						refreshKey.value = `story-${url}-${
+							Math.random() + (1).toString(36).substring(7)
+						},`;
+					},
+					{ preventClicks: true, resolveLinks: 'url', ...bridgeOptions }
+				);
+			}
 		}
 	});
 
@@ -58,7 +61,7 @@ export const useAsyncStory = async (
 export const useAsyncStoryState = async (
 	url: string,
 	apiOptions: any = {},
-	bridgeOptions: any = {}
+	bridgeOptions: any = null
 ) => {
 	const store = useAppStore();
 

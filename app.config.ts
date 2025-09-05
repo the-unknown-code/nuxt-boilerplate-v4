@@ -17,6 +17,7 @@ interface AppConfig {
 	ssr: boolean;
 	storyblok: {
 		enabled: boolean;
+		settings?: string;
 		forceDraft?: boolean;
 		apiOptions: {
 			region?: string;
@@ -53,21 +54,22 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
-	'off-white': '#f5f5f5',
-	blue: '#0000ff',
+	grey: '#909090',
+	white: '#fffef4',
+	green: '#00ff6a',
 });
 
 // Define light and dark themes using generated colors
 const themes: any = {
 	light: {
-		bg: colors['off-white'],
+		bg: colors['white'],
 		fg: colors['black'],
-		contrast: colors['blue'],
+		contrast: colors['green'],
 	},
 	dark: {
 		bg: colors['black'],
-		fg: colors['off-white'],
-		contrast: colors['blue'],
+		fg: colors['white'],
+		contrast: colors['green'],
 	},
 };
 
@@ -94,7 +96,10 @@ export const app: AppConfig = {
 	storyblok: {
 		enabled: true,
 		forceDraft: false,
-		apiOptions: {},
+		settings: 'global', // true if global settings must be loaded before the app is mounted
+		apiOptions: {
+			region: 'us',
+		},
 	},
 	three: {
 		enabled: false,

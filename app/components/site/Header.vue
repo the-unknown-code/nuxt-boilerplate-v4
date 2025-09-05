@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div>
-    Component: site/Header
-  </div>
+	<header />
 </template>
+
+<script setup lang="ts"></script>
 
 <style scoped></style>

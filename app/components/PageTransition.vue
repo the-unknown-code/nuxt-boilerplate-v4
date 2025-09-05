@@ -65,10 +65,8 @@ const onBeforeLeave = () => {
 };
 
 const onLeave = (e: Element, done: () => void) => {
-	t.eventCallback('onComplete', () => {
-		isTransitioning.value = true;
-		done();
-	});
+	isTransitioning.value = true;
+	t.eventCallback('onComplete', done);
 	t.play();
 };
 </script>
@@ -76,7 +74,7 @@ const onLeave = (e: Element, done: () => void) => {
 <style lang="scss" scoped>
 #page-transition {
 	@include fill(fixed);
-	background-color: var(--black);
+	background-color: var(--green);
 	opacity: 0;
 	z-index: 999;
 	pointer-events: none;
