@@ -10,7 +10,7 @@
 	<div
 		id="site"
 		:class="[
-			kebabCase(route.name as string),
+			toKebabCase(route.name as string),
 			{  'is-disabled': !enabled, 'fonts-loaded': fontsLoaded, 'is-loading': isLoading },
 			$store.theme
 		]"
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 // @ts-expect-error - Font loader is not typed
 import loadFonts from '@fuzzco/font-loader';
-import { kebabCase } from 'lodash';
+import { toKebabCase } from './libs/common/utils';
 import { EVENTS } from './libs/constants/event';
 import useAppStore from './store/useAppStore';
 
