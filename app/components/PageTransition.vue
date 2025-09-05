@@ -1,11 +1,5 @@
 <template>
-	<transition
-		mode="out-in"
-		@enter="onEnter"
-		@after-enter="onAfterEnter"
-		@before-leave="onBeforeLeave"
-		@leave="onLeave"
-	>
+	<transition mode="out-in" @enter="onEnter" @after-enter="onAfterEnter">
 		<slot />
 	</transition>
 	<!-- CUSTOM PAGE TRANSITION -->
@@ -21,34 +15,14 @@ import gsap from 'gsap/all';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 import useAppStore from '~/store/useAppStore';
 
+const { hook } = useNuxtApp();
 const $transition = ref<HTMLElement | null>(null);
 const lenis = useLenis();
 const $store = useAppStore();
-const isTransitioning = ref(false);
-const t: gsap.core.Timeline = gsap.timeline({ paused: true });
-
-// ---- CUSTOM HOOKS ----
-
-const initialize = () => {
-	t.to($transition.value, {
-		opacity: 1,
-		duration: GSAPDuration.FAST,
-		ease: GSAPEase.SLOW_IN_OUT,
-	});
-};
-
-tryOnMounted(async () => {
-	await nextTick();
-	initialize();
-});
 
 // ---- TRANSITION HOOKS ----
 const onEnter = async (e: Element, done: () => void) => {
 	done();
-	isTransitioning.value = false;
-
-	await nextTick();
-	t.reverse();
 };
 
 const onAfterEnter = async () => {
@@ -60,15 +34,20 @@ const onAfterEnter = async () => {
 	}
 };
 
-const onBeforeLeave = () => {
+hook('page:start', () => {
 	$store.disable();
-};
+});
 
-const onLeave = (e: Element, done: () => void) => {
-	isTransitioning.value = true;
-	t.eventCallback('onComplete', done);
-	t.play();
-};
+hook('page:finish', () => {
+	setTimeout(async () => {
+		await nextTick();
+		gsap.to('#page-transition', {
+			opacity: 0,
+			duration: GSAPDuration.FAST,
+			ease: GSAPEase.SLOW_IN_OUT,
+		});
+	}, 0);
+});
 </script>
 
 <style lang="scss" scoped>

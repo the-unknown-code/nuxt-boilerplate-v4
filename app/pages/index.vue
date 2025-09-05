@@ -17,6 +17,5 @@ console.log(story);
 <style lang="scss" scoped>
 .page-index {
 	padding: var(--spacer-64) 0;
-	height: 2000px;
 }
 </style>

@@ -69,6 +69,14 @@ export default defineNuxtConfig({
 	vite: {
 		build: {
 			cssMinify: true,
+			terserOptions: {
+				format: {
+					comments: false,
+				},
+			},
+		},
+		esbuild: {
+			legalComments: 'none',
 		},
 		css: {
 			preprocessorOptions: {
